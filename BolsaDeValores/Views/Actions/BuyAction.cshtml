@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Comprar uma ação";   
+}
+
+<h2>Comprar uma ação</h2>
+
+<div>
+    <p>
+        A ação @ViewData["Categoria"] tem quantidade mínima de venda de @ViewData["Quantidade"] ações.
+        Digite abaixo quantas ações deseja comprar:
+    </p>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="BuyAction">
+                <input type="hidden" name="id" value="@ViewData["Id"]" />
+                <div class="form-group">
+                    <label class="control-label">Quantidade que quero comprar</label>
+                    <input name="QuantBuy" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Comprar" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+    @if (ViewData["Erro"] != null)
+    {
+        <p>@ViewData["Erro"]</p>
+    }
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

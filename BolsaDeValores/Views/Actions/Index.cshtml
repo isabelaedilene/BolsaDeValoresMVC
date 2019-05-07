@@ -1,0 +1,55 @@
+﻿@model IEnumerable<BolsaDeValores.Models.Actions>
+
+@{
+    ViewData["Title"] = "Ações à venda";
+}
+
+<h2>Ações à venda</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCategory)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdOwner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceQuant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantMinSell)
+            </th>            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdCategory)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdOwner)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PriceQuant)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QuantMinSell)
+            </td>            
+            <td>
+                <a asp-action="BuyAction" asp-route-id="@item.Id">Comprar ação</a>
+                @*<a asp-action="Delete" asp-route-id="@item.Id">Deletar</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

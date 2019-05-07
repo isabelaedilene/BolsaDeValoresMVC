@@ -1,0 +1,62 @@
+﻿@model IEnumerable<BolsaDeValores.Models.Actions>
+
+@{
+    ViewData["Title"] = "Minhas ações";
+}
+
+<h2>Minhas ações</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdCategory)
+            </th>            
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PriceQuant)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QuantMinSell)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdCategory)
+                </td>               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PriceQuant)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuantMinSell)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td> 
+                <td>
+                    @if (item.Status == false)
+                    {
+                        <a asp-action="SellAction" asp-route-id="@item.Id">Vender ação</a>
+                    }
+                    else
+                    {
+                        <a asp-action="CancelSellAction" asp-route-id="@item.Id">Cancelar venda</a>
+                    }
+                </td>                               
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Vender ação";
+}
+
+<h2>Vender ação</h2>
+
+<div>
+    <p>
+        Vender a ação @ViewData["Name"]. Você tem @ViewData["Quantidade"] ações disponíveis. 
+        Digite abaixo quantas ações deseja vender e o preço unitário:
+    </p>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="SellAction">
+                <input type="hidden" name="id" value="@ViewData["Id"]" />
+                <div class="form-group">
+                    <label class="control-label">Quantidade mínima que quero vender</label>
+                    <input name="QuantSell" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Preço unitário</label>
+                    <input name="PriceUnit" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Vender" class="btn btn-default" />
+                </div>
+            </form>
+        </div>
+    </div>
+    @if (ViewData["Erro"] != null)
+    {
+        <p>@ViewData["Erro"]</p>
+    }
+
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+﻿@model BolsaDeValores.Models.Clients
+
+@{
+    ViewData["Title"] = "Meu Perfil";
+}
+
+<h2>Meu perfil</h2>
+
+<div>    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>        
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Editar</a> |
+    <a asp-action="MyActions" asp-route-id="@Model.Id">Minhas ações</a> 
+</div>
